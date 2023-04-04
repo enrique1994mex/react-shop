@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: '/',
+		publicPath: './',
 	},
 	resolve: {
 		extensions: ['.js', '.jsx'],
@@ -16,7 +16,7 @@ module.exports = {
 			logos: path.resolve(__dirname, 'src/assets/logos/'),
 		},
 	},
-	plugins: [new HtmlWebpackPlugin({ template: 'src/index.html' })],
+	plugins: [new HtmlWebpackPlugin({ template: 'public/index.html' })],
 	module: {
 		rules: [
 			{
