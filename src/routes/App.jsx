@@ -18,7 +18,7 @@ const App = () => {
 	return (
 		<AppProvider>
 			<Layout>
-				<BrowserRouter>
+				<BrowserRouter basename='/react-shop'>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
