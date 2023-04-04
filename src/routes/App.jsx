@@ -10,27 +10,30 @@ import CreateAccount from '../pages/CreateAccount'
 import Checkout from '../pages/Checkout'
 import Orders from '../pages/Orders'
 import NotFound from '../pages/NotFound'
+import AppProvider from '../context/AppContext'
 
 import '../styles/global.css'
 
 const App = () => {
 	return (
-		<Layout>
-			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/login' element={<Login />} />
-					<Route path='/password-recovery' element={<RecoveyPassword />} />
-					<Route path='/send-email' element={<SendEmail />} />
-					<Route path='/new-password' element={<NewPassword />} />
-					<Route path='/account' element={<MyAccount />} />
-					<Route path='/signup' element={<CreateAccount />} />
-					<Route path='/checkout' element={<Checkout />} />
-					<Route path='/orders' element={<Orders />} />
-					<Route path='*' element={<NotFound />} />
-				</Routes>
-			</BrowserRouter>
-		</Layout>
+		<AppProvider>
+			<Layout>
+				<BrowserRouter>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='/password-recovery' element={<RecoveyPassword />} />
+						<Route path='/send-email' element={<SendEmail />} />
+						<Route path='/new-password' element={<NewPassword />} />
+						<Route path='/account' element={<MyAccount />} />
+						<Route path='/signup' element={<CreateAccount />} />
+						<Route path='/checkout' element={<Checkout />} />
+						<Route path='/orders' element={<Orders />} />
+						<Route path='*' element={<NotFound />} />
+					</Routes>
+				</BrowserRouter>
+			</Layout>
+		</AppProvider>
 	)
 }
 
