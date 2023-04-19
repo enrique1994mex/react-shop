@@ -20,7 +20,7 @@ const App = () => {
 	return (
 		<AppProvider>
 			<Layout>
-				<BrowserRouter>
+				<BrowserRouter basename='/'>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
