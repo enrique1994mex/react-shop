@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: './',
+		publicPath: '/',
 	},
 	resolve: {
 		extensions: ['.js', '.jsx'],
@@ -40,6 +40,10 @@ module.exports = {
 						},
 					},
 				],
+			},
+			{
+				test: /\.(png|jp(e*)g|gif)$/,
+				type: 'asset/resource',
 			},
 		],
 	},

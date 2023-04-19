@@ -14,11 +14,13 @@ import AppProvider from '../context/AppContext'
 
 import '../styles/global.css'
 
+// basename='/react-shop'
+
 const App = () => {
 	return (
 		<AppProvider>
 			<Layout>
-				<BrowserRouter basename='/react-shop'>
+				<BrowserRouter>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />

@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
+import IconClose from 'icons/icon_close.png'
 import 'styles/components/OrderItem.scss'
 
 const OrderItem = ({ product, index }) => {
@@ -16,7 +17,7 @@ const OrderItem = ({ product, index }) => {
 			<p>{product.title}</p>
 			<p>{product.price}</p>
 			<img
-				src='./icons/icon_close.png'
+				src={IconClose}
 				alt='close'
 				onClick={() => handleRemove(product, index)}
 			/>
