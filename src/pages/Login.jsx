@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import 'styles/Login.scss'
 import logo from '../../public/assets/logos/logo_yard_sale.svg'
 
@@ -19,7 +20,7 @@ const Login = () => {
 			<div className='Login-container'>
 				<img src={logo} alt='logo' className='logo' />
 
-				<form action='/' className='form' ref={form}>
+				<form className='form' ref={form}>
 					<label htmlFor='email' className='label'>
 						Email address
 					</label>
@@ -46,10 +47,12 @@ const Login = () => {
 					>
 						Log in
 					</button>
-					<a href='/'>Forgot my password</a>
+					<Link to='/new-password'>Forgot my password</Link>
 				</form>
 
-				<button className='secondary-button signup-button'>Sign up</button>
+				<Link to='/signup' className='link-login'>
+					Sign up
+				</Link>
 			</div>
 		</div>
 	)

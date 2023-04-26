@@ -1,6 +1,11 @@
-import 'styles/Checkout.scss'
+import { useContext } from 'react'
 import OrderItem from 'components/OrderItem'
+import { AppContext } from '../context/AppContext'
+import 'styles/Checkout.scss'
 const Checkout = () => {
+	const {
+		state: { cart },
+	} = useContext(AppContext)
 	return (
 		<div className='Checkout'>
 			<div className='Checkout-container'>
@@ -14,7 +19,9 @@ const Checkout = () => {
 						<p>$560.00</p>
 					</div>
 				</div>
-				<OrderItem />
+				{cart.map((product, i) => (
+					<OrderItem product={product} index={i} key={i} />
+				))}
 			</div>
 		</div>
 	)

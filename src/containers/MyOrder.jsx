@@ -3,6 +3,7 @@ import OrderItem from 'components/OrderItem'
 import { AppContext } from '../context/AppContext'
 import 'styles/containers/MyOrder.scss'
 import iconFlechita from 'icons/flechita.svg'
+import { Link } from 'react-router-dom'
 
 const MyOrder = () => {
 	const {
@@ -32,7 +33,9 @@ const MyOrder = () => {
 					</p>
 					<p>${sumTotal()}</p>
 				</div>
-				<button className='primary-button'>Checkout</button>
+				<Link to='/checkout' className='link-order'>
+					Checkout
+				</Link>
 			</div>
 		</aside>
 	)

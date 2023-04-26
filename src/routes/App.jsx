@@ -19,8 +19,8 @@ import '../styles/global.css'
 const App = () => {
 	return (
 		<AppProvider>
-			<Layout>
-				<BrowserRouter basename='/react-shop'>
+			<BrowserRouter>
+				<Layout>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
@@ -33,8 +33,8 @@ const App = () => {
 						<Route path='/orders' element={<Orders />} />
 						<Route path='*' element={<NotFound />} />
 					</Routes>
-				</BrowserRouter>
-			</Layout>
+				</Layout>
+			</BrowserRouter>
 		</AppProvider>
 	)
 }

@@ -12,7 +12,7 @@ const OrderItem = ({ product, index }) => {
 	return (
 		<div className='OrderItem'>
 			<figure>
-				<img src={product.images[0]} alt={product.price} />
+				<img src={product?.images[0]} alt={product.price} />
 			</figure>
 			<p>{product.title}</p>
 			<p>{product.price}</p>

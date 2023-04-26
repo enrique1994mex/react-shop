@@ -55,6 +55,20 @@
 	font-weight: bold;
 	height: 50px;
 }
+
+.link-order {
+	display: inline-block;
+	background-color: var(--hospital-green);
+	border-radius: 8px;
+	border: none;
+	color: var(--white);
+	text-decoration: none;
+	text-align: center;
+	font-size: var(--lg);
+	font-weight: bold;
+	padding: 1rem 0;
+	width: 100%;
+}
 @media (max-width: 640px) {
 	.MyOrder {
 		width: 100%;
