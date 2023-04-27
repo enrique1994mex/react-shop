@@ -19,8 +19,8 @@ import '../styles/global.css'
 
 const App = () => {
 	return (
-		<AppProvider basename='/react-shop'>
-			<BrowserRouter>
+		<AppProvider>
+			<BrowserRouter basename='/react-shop'>
 				<AuthProvider>
 					<Layout>
 						<Routes>
