@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import 'styles/SendEmail.scss'
 import iconEmail from 'icons/email.svg'
 const SendEmail = () => {
+	const navigate = useNavigate()
+
+	const onLogin = () => {
+		navigate('/login')
+	}
 	return (
 		<div className='SendEmail'>
 			<div className='form-container'>
@@ -12,7 +18,9 @@ const SendEmail = () => {
 				<div className='email-image'>
 					<img src={iconEmail} alt='email' />
 				</div>
-				<button className='primary-button login-button'>Login</button>
+				<button className='primary-button login-button' onClick={onLogin}>
+					Login
+				</button>
 				<p className='resend'>
 					<span>Didn receive the email?</span>
 					<a href='/'>Resend</a>

@@ -1,19 +1,24 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 import 'styles/Login.scss'
 import logo from '../../public/assets/logos/logo_yard_sale.svg'
 
 const Login = () => {
+	const { login, user } = useAuth()
 	const form = useRef(null)
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		const formData = new FormData(form.current)
 		const data = {
-			usename: formData.get('email'),
+			username: formData.get('email'),
 			password: formData.get('password'),
 		}
-		console.log(data)
+		login(data)
+	}
+	if (user?.username) {
+		return <Navigate to='/' />
 	}
 	return (
 		<div className='Login'>

@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 import 'styles/components/Menu.scss'
-const Menu = () => {
+const Menu = ({ setToggle }) => {
+	const { logout } = useAuth()
+
+	const onLogout = () => {
+		setToggle((prevState) => !prevState)
+		logout()
+	}
 	return (
 		<div className='Menu'>
 			<ul>
@@ -15,7 +22,9 @@ const Menu = () => {
 				</li>
 
 				<li>
-					<Link to='/'>Sign out</Link>
+					<button className='primary-button-li' onClick={onLogout}>
+						Sign out
+					</button>
 				</li>
 			</ul>
 		</div>

@@ -1,20 +1,27 @@
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import OrderItem from 'components/OrderItem'
 import { AppContext } from '../context/AppContext'
 import 'styles/containers/MyOrder.scss'
 import iconFlechita from 'icons/flechita.svg'
-import { Link } from 'react-router-dom'
 
-const MyOrder = () => {
+const MyOrder = ({ setToggleOrders }) => {
 	const {
 		state: { cart },
 	} = useContext(AppContext)
+
+	const navigate = useNavigate()
 
 	const sumTotal = () => {
 		const reducer = (accumulator, currentValue) =>
 			accumulator + currentValue.price
 		const sum = cart.reduce(reducer, 0)
 		return sum
+	}
+
+	const onCheckout = () => {
+		setToggleOrders((prevState) => !prevState)
+		navigate('/checkout')
 	}
 
 	return (
@@ -33,9 +40,9 @@ const MyOrder = () => {
 					</p>
 					<p>${sumTotal()}</p>
 				</div>
-				<Link to='/checkout' className='link-order'>
+				<button className='primary-button' onClick={onCheckout}>
 					Checkout
-				</Link>
+				</button>
 			</div>
 		</aside>
 	)

@@ -34,3 +34,15 @@
 	margin-bottom: 20px;
 	display: inline-block;
 }
+.primary-button-li {
+	background-color: var(--very-light-pink);
+	border-radius: 8px;
+	border: none;
+	color: var(--white);
+	width: 100%;
+	cursor: pointer;
+	font-size: var(--md);
+	font-weight: bold;
+	height: 50px;
+	margin-bottom: 20px;
+}

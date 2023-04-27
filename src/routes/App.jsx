@@ -11,6 +11,7 @@ import Checkout from '../pages/Checkout'
 import Orders from '../pages/Orders'
 import NotFound from '../pages/NotFound'
 import AppProvider from '../context/AppContext'
+import { AuthProvider, AuthRoute } from '../context/Auth'
 
 import '../styles/global.css'
 
@@ -18,22 +19,52 @@ import '../styles/global.css'
 
 const App = () => {
 	return (
-		<AppProvider>
+		<AppProvider basename='/react-shop'>
 			<BrowserRouter>
-				<Layout>
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/login' element={<Login />} />
-						<Route path='/password-recovery' element={<RecoveyPassword />} />
-						<Route path='/send-email' element={<SendEmail />} />
-						<Route path='/new-password' element={<NewPassword />} />
-						<Route path='/account' element={<MyAccount />} />
-						<Route path='/signup' element={<CreateAccount />} />
-						<Route path='/checkout' element={<Checkout />} />
-						<Route path='/orders' element={<Orders />} />
-						<Route path='*' element={<NotFound />} />
-					</Routes>
-				</Layout>
+				<AuthProvider>
+					<Layout>
+						<Routes>
+							<Route
+								path='/'
+								element={
+									<AuthRoute>
+										<Home />
+									</AuthRoute>
+								}
+							/>
+							<Route path='/login' element={<Login />} />
+							<Route path='/password-recovery' element={<RecoveyPassword />} />
+							<Route path='/send-email' element={<SendEmail />} />
+							<Route path='/new-password' element={<NewPassword />} />
+							<Route
+								path='/account'
+								element={
+									<AuthRoute>
+										<MyAccount />
+									</AuthRoute>
+								}
+							/>
+							<Route path='/signup' element={<CreateAccount />} />
+							<Route
+								path='/checkout'
+								element={
+									<AuthRoute>
+										<Checkout />
+									</AuthRoute>
+								}
+							/>
+							<Route
+								path='/orders'
+								element={
+									<AuthRoute>
+										<Orders />
+									</AuthRoute>
+								}
+							/>
+							<Route path='*' element={<NotFound />} />
+						</Routes>
+					</Layout>
+				</AuthProvider>
 			</BrowserRouter>
 		</AppProvider>
 	)

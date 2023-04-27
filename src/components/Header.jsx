@@ -6,11 +6,13 @@ import menu from 'icons/icon_menu.svg'
 import logo from 'logos/logo_yard_sale.svg'
 import shoppingCart from 'icons/icon_shopping_cart.svg'
 import { AppContext } from '../context/AppContext'
+import { useAuth } from '../hooks/useAuth'
 
 const Header = () => {
 	const [toggle, setToggle] = useState(false)
 	const [toggleOrders, setToggleOrders] = useState(false)
 	const { state } = useContext(AppContext)
+	const { user } = useAuth()
 
 	const handleToggle = () => {
 		setToggle(!toggle)
@@ -47,7 +49,7 @@ const Header = () => {
 			<div className='navbar-right'>
 				<ul>
 					<li className='navbar-email' onClick={handleToggle}>
-						platzi@example.com
+						{user?.username}
 					</li>
 					<li
 						className='navbar-shopping-cart'
@@ -58,8 +60,8 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			{toggle && <Menu />}
-			{toggleOrders && <MyOrder />}
+			{toggle && <Menu setToggle={setToggle} />}
+			{toggleOrders && <MyOrder setToggleOrders={setToggleOrders} />}
 		</nav>
 	)
 }

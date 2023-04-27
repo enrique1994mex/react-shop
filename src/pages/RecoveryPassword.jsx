@@ -1,7 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import 'styles/RecoveryPassword.scss'
 import iconEmail from 'icons/email.svg'
 
 const RecoveryPassword = () => {
+	const navigate = useNavigate()
+
+	const onLogin = () => {
+		navigate('/login')
+	}
 	return (
 		<div className='login'>
 			<div className='form-container'>
@@ -16,7 +22,9 @@ const RecoveryPassword = () => {
 					<img src={iconEmail} alt='email' />
 				</div>
 
-				<button className='primary-button login-button'>Login</button>
+				<button className='primary-button login-button' onClick={onLogin}>
+					Login
+				</button>
 
 				<p className='resend'>
 					<span>Didn receive the email?</span>
