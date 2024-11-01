@@ -20,7 +20,9 @@ import '../styles/global.css'
 const App = () => {
 	return (
 		<AppProvider>
-			<BrowserRouter basename='/react-shop'>
+			<BrowserRouter
+				basename={process.env.NODE_ENV === 'production' ? '/react-shop' : ''}
+			>
 				<AuthProvider>
 					<Layout>
 						<Routes>
