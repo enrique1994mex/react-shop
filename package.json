@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "webpack serve --mode=development",
-		"build": "webpack --mode=production",
+		"start": "cross-env NODE_ENV=development webpack serve --mode=development",
+		"build": "cross-env NODE_ENV=production webpack --mode=production",
 		"format": "prettier --write .",
 		"lint": "eslint --fix . --ext .js,.jsx"
 	},
@@ -23,6 +23,7 @@
 		"@babel/core": "^7.21.3",
 		"@babel/preset-react": "^7.18.6",
 		"babel-loader": "^9.1.2",
+		"cross-env": "^7.0.3",
 		"css-loader": "^6.7.3",
 		"eslint": "^8.37.0",
 		"eslint-config-prettier": "^8.8.0",
