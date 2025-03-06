@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from '../containers/Layout'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
-import RecoveyPassword from '../pages/RecoveryPassword'
+import Recovery from '../pages/Recovery'
 import SendEmail from '../pages/SendEmail'
 import NewPassword from '../pages/NewPassword'
 import MyAccount from '../pages/MyAccount'
@@ -35,7 +35,7 @@ const App = () => {
 								}
 							/>
 							<Route path='/login' element={<Login />} />
-							<Route path='/password-recovery' element={<RecoveyPassword />} />
+							<Route path='/recovery-password' element={<Recovery />} />
 							<Route path='/send-email' element={<SendEmail />} />
 							<Route path='/new-password' element={<NewPassword />} />
 							<Route

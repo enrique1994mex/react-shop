@@ -3,7 +3,7 @@ import Menu from 'components/Menu'
 import MyOrder from '../containers/MyOrder'
 import 'styles/components/Header.scss'
 import menu from 'icons/icon_menu.svg'
-import logo from 'logos/logo_yard_sale.svg'
+import logo from 'logos/logo_shoppingY.jpg'
 import shoppingCart from 'icons/icon_shopping_cart.svg'
 import { AppContext } from '../context/AppContext'
 import { useAuth } from '../hooks/useAuth'
@@ -22,7 +22,7 @@ const Header = () => {
 			<img src={menu} alt='menu' className='menu' />
 
 			<div className='navbar-left'>
-				<img src={logo} alt='nav-logo' className='nav-logo' />
+				<img src={logo} alt='nav-logo' className='nav-logo' width="70px" height="70px"/>
 
 				<ul>
 					<li>
@@ -49,7 +49,7 @@ const Header = () => {
 			<div className='navbar-right'>
 				<ul>
 					<li className='navbar-email' onClick={handleToggle}>
-						{user?.username}
+						{user?.email}
 					</li>
 					<li
 						className='navbar-shopping-cart'

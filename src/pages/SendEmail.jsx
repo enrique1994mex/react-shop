@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import 'styles/SendEmail.scss'
 import iconEmail from 'icons/email.svg'
+import logo from 'logos/logo_shoppingY.jpg'
+
 const SendEmail = () => {
 	const navigate = useNavigate()
 
@@ -10,7 +12,7 @@ const SendEmail = () => {
 	return (
 		<div className='SendEmail'>
 			<div className='form-container'>
-				<img src='./logos/logo_yard_sale.svg' alt='logo' className='logo' />
+				<img src={logo} alt='logo' className='logo' />
 				<h1 className='title'>Email has been sent!</h1>
 				<p className='subtitle'>
 					Please check your inbox for instructions on how to reset the password
