@@ -1,25 +1,45 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import 'styles/Login.scss'
-import logo from '../../public/assets/logos/logo_yard_sale.svg'
+import logo from 'logos/logo_shoppingY.jpg'
 
 const Login = () => {
 	const { login, user } = useAuth()
 	const form = useRef(null)
+	const [error, setError] = useState('')
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault()
 		const formData = new FormData(form.current)
-		const data = {
-			username: formData.get('email'),
-			password: formData.get('password'),
+		const email = formData.get('email')
+		const password = formData.get('password')
+		const role = 'customer'
+
+		if (!email || !/\S+@\S+\.\S+/.test(email)) {
+			setError("Please enter a valid email address.")
+			return
 		}
-		login(data)
+
+		if (!password) {
+			setError("Please enter your password.")
+			return
+		}
+
+		setError('')
+
+		try {
+			await login({ email, password, role })
+		} catch (error) {
+			setError('Error al iniciar sesión: ' + error.message)
+		}
+		
 	}
-	if (user?.username) {
+
+	if (user?.email) {
 		return <Navigate to='/' />
 	}
+	
 	return (
 		<div className='Login'>
 			<div className='Login-container'>
@@ -32,7 +52,7 @@ const Login = () => {
 					<input
 						type='text'
 						name='email'
-						placeholder='platzi@example.cm'
+						placeholder='app@example.cm'
 						className='input input-email'
 					/>
 
@@ -46,13 +66,15 @@ const Login = () => {
 						className='input input-password'
 					/>
 
+					{error && <p className='error-message'>{error}</p>}
+
 					<button
 						className='primary-button login-button'
 						onClick={handleSubmit}
 					>
 						Log in
 					</button>
-					<Link to='/new-password'>Forgot my password</Link>
+					<Link to='/recovery-password'>Forgot my password</Link>
 				</form>
 
 				<Link to='/signup' className='link-login'>
