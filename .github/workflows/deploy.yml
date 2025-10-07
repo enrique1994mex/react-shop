@@ -25,9 +25,11 @@ jobs:
       - name: Install dependencies 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: npm ci
       - name: Build 
-        run: npx cross-env NODE_ENV=production webpack --mode=production
         env:
-          API_URL: ${{ secrets.API_URL }} # Example of how to pass a secret to your build. Remove if not needed.  
+          NODE_ENV: production
+          API_URL: ${{ secrets.API_URL }} # Ensure you have set this secret in your repository settings.
+        run: npx cross-env NODE_ENV=production webpack --mode=production
+        
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
