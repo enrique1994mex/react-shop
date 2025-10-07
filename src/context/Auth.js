@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import axios from 'axios'
@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
 
 	const login = async ({ email, password, role }) => {
 		try {
-			const response = await axios.post('https://api-node-store-1fbc2f8d722f.herokuapp.com/api/v1/auth/login', {
+			const response = await axios.post(`${process.env.API_URL}/auth/login`, {
 				email,
 				password,
 				role
@@ -38,21 +38,21 @@ const AuthProvider = ({ children }) => {
 		navigate('/login')
 	}
 
-	// useEffect(() => {
-	// 	const token = localStorage.getItem('token')
-	// 	if (token) {
-	// 		// Validar token con la API
-	// 		axios.get('/api/auth/validate-token', { headers: { Authorization: `Bearer ${token}` } })
-	// 			.then(response => {
-	// 				setUser({ email: response.data.username }) // Si el token es válido, guardamos el usuario
-	// 			})
-	// 			.catch(() => {
-	// 				// Si el token no es válido, eliminamos el token y el usuario del estado
-	// 				localStorage.removeItem('token')
-	// 				setUser(null)
-	// 			})
-	// 	}
-	// }, [])
+	useEffect(() => {
+		const token = localStorage.getItem('token')
+		if (token) {
+			// Validar token con la API
+			axios.get(`${process.env.API_URL}/auth/validate-token`, { headers: { Authorization: `Bearer ${token}` } })
+				.then(response => {
+					setUser({ email: response.data.user.email }) // Si el token es válido, guardamos el usuario
+				})
+				.catch(() => {
+					// Si el token no es válido, eliminamos el token y el usuario del estado
+					localStorage.removeItem('token')
+					setUser(null)
+				})
+		}
+	}, [])
 
 	const auth = { user, login, logout }
 	return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>

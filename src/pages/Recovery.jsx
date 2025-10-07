@@ -20,7 +20,7 @@ const Recovery = () => {
 		}
 
 		try {
-			const response = await axios.post('https://api-node-store-1fbc2f8d722f.herokuapp.com/api/v1/auth/recovery', {
+			const response = await axios.post(`${process.env.API_URL}/auth/recovery`, {
 				email
 			}, {
 				headers: {

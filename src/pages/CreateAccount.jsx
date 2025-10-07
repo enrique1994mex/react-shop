@@ -33,7 +33,7 @@ const CreateAccount = () => {
 		}
 
 		try {
-			const response = await axios.post('https://api-node-store-1fbc2f8d722f.herokuapp.com/api/v1/customers', data);
+			const response = await axios.post(`${process.env.API_URL}/customers`, data);
 			if (response.status === 201) {
 				setTimeout(() => navigate('/login'), 500) // Redirigir al login
 			}

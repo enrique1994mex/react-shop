@@ -1,5 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+
+// Detectar entorno y cargar el archivo correcto
+const envFile = process.env.NODE_ENV === 'production' ? './.env.production' : './.env';
+const env = dotenv.config({ path: envFile }).parsed;
 
 module.exports = {
 	output: {
@@ -16,7 +22,12 @@ module.exports = {
 			logos: path.resolve(__dirname, 'src/assets/logos/'),
 		},
 	},
-	plugins: [new HtmlWebpackPlugin({ template: 'public/index.html' })],
+	plugins: [
+			new HtmlWebpackPlugin({ template: 'public/index.html' }), 
+			new webpack.DefinePlugin({
+    		'process.env.API_URL': JSON.stringify(env.API_URL)
+  		})
+		],
 	module: {
 		rules: [
 			{

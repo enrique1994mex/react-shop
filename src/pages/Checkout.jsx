@@ -6,6 +6,10 @@ const Checkout = () => {
 	const {
 		state: { cart },
 	} = useContext(AppContext)
+
+	const totalPrice = cart.reduce((acc, item) => acc + item.price, 0)
+	const totalArticles = cart.length
+
 	return (
 		<div className='Checkout'>
 			<div className='Checkout-container'>
@@ -13,10 +17,9 @@ const Checkout = () => {
 				<div className='Checkout-content'>
 					<div className='order'>
 						<p>
-							<span>03.25.21</span>
-							<span>6 articles</span>
+							<span>${totalPrice}</span>
 						</p>
-						<p>$560.00</p>
+						<p>{totalArticles}</p>
 					</div>
 				</div>
 				{cart.map((product, i) => (
