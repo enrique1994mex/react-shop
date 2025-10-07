@@ -52,7 +52,7 @@ const Login = () => {
 					<input
 						type='text'
 						name='email'
-						placeholder='app@example.cm'
+						placeholder='app@example.com'
 						className='input input-email'
 					/>
 
