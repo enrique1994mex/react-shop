@@ -11,7 +11,7 @@
 .Checkout-container {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	width: 300px;
+	width: 350px;
 }
 .Checkout-content {
 	display: flex;
@@ -42,4 +42,44 @@
 .order p:nth-child(2) {
 	text-align: end;
 	font-weight: bold;
+}
+
+.Checkout-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+  .btn-back,
+  .btn-pay {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-back {
+    background-color: #f0f0f0;
+    color: #333;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  .btn-pay {
+    background-color: #0070f3; // Azul tipo PayPal
+    color: #fff;
+
+    &:hover {
+      background-color: #005bb5;
+    }
+
+    &:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+  }
 }
